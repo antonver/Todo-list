@@ -1,24 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>TODO list</h1>
-
-    {% if task_list %}
-      <ul>
-      {% for task in task_list %}
-        <li>
-        <ul>
-          <li><b>{{ task.name }}</b></li>
-          <li>Created: {{ task.date }}</li>
-          {% if task.deadline %}<li>Deadline: {{ task.deadline }}</li>{% endif %}
-          <li>Tags: {% for tag in task.tags %}{{ tag }}{% endfor %} <a href="{% url 'list:task-update' pk=task.id %}">Update</a><a href="{% url 'list:task-delete' pk=task.id %}">Delete</a></li>
-        </ul>
-        
-        </li>
-      {% endfor %}
-      </ul>
-    {% endif %}
-
-
-
+    <div class="todo-container">
+        <h1 class="todo-title">TODO List</h1>
+        <div class="add-task">
+            <a href="{% url 'list:task-create' %}" class="btn btn-primary">Add Task</a>
+        </div>
+        {% if task_list %}
+            <ul class="task-list">
+                {% for task in task_list %}
+                    <li class="task-item">
+                        <div class="task-details">
+                            <h3 class="task-name">{{ task.name }}</h3>
+                            <p class="task-date">Created: {{ task.date }}</p>
+                            {% if task.deadline %}
+                                <p class="task-deadline">Deadline: {{ task.deadline }}</p>
+                            {% endif %}
+                            <p class="task-tags">
+                                Tags: 
+                                {% for tag in task.tags.all %}
+                                    <span class="tag">{{ tag }}</span>
+                                {% endfor %}
+                            </p>
+                        </div>
+                        <div class="task-actions">
+                            {% if task.is_completed %}<a href="{% url "list:change" pk=task.id %}" class="btn btn-secondary" >Undo</a>{% else %}
+                            <a href="{% url "list:change" pk=task.id %}" class="btn btn-success" >Complete</a>{% endif %}
+                            <a href="{% url 'list:task-update' pk=task.id %}" class="btn btn-secondary">Update</a>
+                            <a href="{% url 'list:task-delete' pk=task.id %}" class="btn btn-danger">Delete</a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-tasks">No tasks available. Add a new task to get started.</p>
+        {% endif %}
+    </div>
 {% endblock %}
+
