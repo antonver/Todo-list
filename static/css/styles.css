@@ -1,0 +1,154 @@
+.todo-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.todo-title {
+    text-align: center;
+    color: #333;
+}
+
+.add-task {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-item {
+    background-color: #fff;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.task-details {
+    margin-bottom: 10px;
+}
+
+.task-name {
+    font-size: 1.2em;
+    margin: 0;
+    color: #007bff;
+}
+
+.task-date, .task-deadline, .task-tags {
+    margin: 5px 0;
+    color: #555;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #e0e0e0;
+    padding: 3px 8px;
+    margin-right: 5px;
+    border-radius: 12px;
+    font-size: 0.85em;
+}
+
+.task-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-left: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #28a745;
+}
+
+.btn-secondary {
+    background-color: #17a2b8;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.no-tasks {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+}
+
+.tags-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tags-title {
+    text-align: center;
+    color: #333;
+}
+
+.add-tag {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.tag-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.tag-table th, .tag-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.tag-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.tag-row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.no-tags {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-left: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #28a745;
+}
+
+.btn-secondary {
+    background-color: #17a2b8;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
