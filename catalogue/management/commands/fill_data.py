@@ -2,11 +2,11 @@ from django.core.management.base import BaseCommand
 from django.utils import timezone
 from datetime import timedelta
 
-from list.models import Task, Tag
+from catalogue.models import Task, Tag
 
 
 class Command(BaseCommand):
-    help = 'Fill the database with sample data for Task and Tag models'
+    help = "Fill the database with sample data for Task and Tag models"
 
     def handle(self, *args, **kwargs):
         Task.objects.all().delete()
@@ -16,7 +16,7 @@ class Command(BaseCommand):
         tag2 = Tag.objects.create(name="Personal")
         tag3 = Tag.objects.create(name="Urgent")
 
-        self.stdout.write(self.style.SUCCESS('Tags created successfully.'))
+        self.stdout.write(self.style.SUCCESS("Tags created successfully."))
 
         task1 = Task.objects.create(
             content="Finish Django project",
@@ -42,8 +42,8 @@ class Command(BaseCommand):
         )
         task3.tags.add(tag2)
 
-        self.stdout.write(self.style.SUCCESS('Tasks created successfully.'))
+        self.stdout.write(self.style.SUCCESS("Tasks created successfully."))
 
         for task in Task.objects.all():
-            tags = ', '.join([tag.name for tag in task.tags.all()])
-            self.stdout.write(f'Task: {task.content}, Tags: {tags}')
+            tags = ", ".join([tag.name for tag in task.tags.all()])
+            self.stdout.write(f"Task: {task.content}, Tags: {tags}")

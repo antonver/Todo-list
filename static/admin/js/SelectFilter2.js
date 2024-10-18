@@ -44,7 +44,7 @@ Requires core.js and SelectBox.js.
                 'class', 'help help-tooltip help-icon',
                 'title', interpolate(
                     gettext(
-                        'This is the list of available %s. You may choose some by ' +
+                        'This is the catalogue of available %s. You may choose some by ' +
                         'selecting them in the box below and then clicking the ' +
                         '"Choose" arrow between the two boxes.'
                     ),
@@ -60,7 +60,7 @@ Requires core.js and SelectBox.js.
             quickElement(
                 'span', search_filter_label, '',
                 'class', 'help-tooltip search-label-icon',
-                'title', interpolate(gettext("Type into this box to filter down the list of available %s."), [field_name])
+                'title', interpolate(gettext("Type into this box to filter down the catalogue of available %s."), [field_name])
             );
 
             filter_p.appendChild(document.createTextNode(' '));
@@ -89,7 +89,7 @@ Requires core.js and SelectBox.js.
                 'class', 'help help-tooltip help-icon',
                 'title', interpolate(
                     gettext(
-                        'This is the list of chosen %s. You may remove some by ' +
+                        'This is the catalogue of chosen %s. You may remove some by ' +
                         'selecting them in the box below and then clicking the ' +
                         '"Remove" arrow between the two boxes.'
                     ),
@@ -105,7 +105,7 @@ Requires core.js and SelectBox.js.
             quickElement(
                 'span', search_filter_selected_label, '',
                 'class', 'help-tooltip search-label-icon',
-                'title', interpolate(gettext("Type into this box to filter down the list of selected %s."), [field_name])
+                'title', interpolate(gettext("Type into this box to filter down the catalogue of selected %s."), [field_name])
             );
 
             filter_selected_p.appendChild(document.createTextNode(' '));
@@ -116,9 +116,9 @@ Requires core.js and SelectBox.js.
             const to_box = quickElement('select', selector_chosen, '', 'id', field_id + '_to', 'multiple', '', 'size', from_box.size, 'name', from_box.name);
             to_box.className = 'filtered';
             
-            const warning_footer = quickElement('div', selector_chosen, '', 'class', 'list-footer-display');
+            const warning_footer = quickElement('div', selector_chosen, '', 'class', 'catalogue-footer-display');
             quickElement('span', warning_footer, '', 'id', field_id + '_list-footer-display-text');
-            quickElement('span', warning_footer, ' (click to clear)', 'class', 'list-footer-display__clear');
+            quickElement('span', warning_footer, ' (click to clear)', 'class', 'catalogue-footer-display__clear');
             
             const clear_all = quickElement('a', selector_chosen, gettext('Remove all'), 'title', interpolate(gettext('Click to remove all chosen %s at once.'), [field_name]), 'href', '#', 'id', field_id + '_remove_all_link');
             clear_all.className = 'selector-clearall';

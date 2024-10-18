@@ -4,7 +4,7 @@
     <div class="todo-container">
         <h1 class="todo-title">TODO List</h1>
         <div class="add-task">
-            <a href="{% url 'list:task-create' %}" class="btn btn-primary">Add Task</a>
+            <a href="{% url 'catalogue:task-create' %}" class="btn btn-primary">Add Task</a>
         </div>
         {% if task_list %}
             <ul class="task-list">
@@ -24,10 +24,10 @@
                             </p>
                         </div>
                         <div class="task-actions">
-                            {% if task.is_completed %}<a href="{% url "list:change" pk=task.id %}" class="btn btn-secondary" >Undo</a>{% else %}
-                            <a href="{% url "list:change" pk=task.id %}" class="btn btn-success" >Complete</a>{% endif %}
-                            <a href="{% url 'list:task-update' pk=task.id %}" class="btn btn-secondary">Update</a>
-                            <a href="{% url 'list:task-delete' pk=task.id %}" class="btn btn-danger">Delete</a>
+                            {% if task.is_completed %}<a href="{% url "catalogue:change" pk=task.id %}" class="btn btn-secondary" >Undo</a>{% else %}
+                            <a href="{% url "catalogue:change" pk=task.id %}" class="btn btn-success" >Complete</a>{% endif %}
+                            <a href="{% url 'catalogue:task-update' pk=task.id %}" class="btn btn-secondary">Update</a>
+                            <a href="{% url 'catalogue:task-delete' pk=task.id %}" class="btn btn-danger">Delete</a>
                         </div>
                     </li>
                 {% endfor %}

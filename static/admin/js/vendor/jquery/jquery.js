@@ -882,7 +882,7 @@ function find( selector, context, results, seed ) {
 				// qSA considers elements outside a scoping root when evaluating child or
 				// descendant combinators, which is not what we want.
 				// In such cases, we work around the behavior by prefixing every selector in the
-				// list with an ID selector referencing the scope context.
+				// catalogue with an ID selector referencing the scope context.
 				// The technique has to be used as well when a leading combinator is used
 				// as such selectors are not recognized by querySelectorAll.
 				// Thanks to Andrew Dupont for this technique.
@@ -909,7 +909,7 @@ function find( selector, context, results, seed ) {
 						}
 					}
 
-					// Prefix every selector in the list
+					// Prefix every selector in the catalogue
 					groups = tokenize( selector );
 					i = groups.length;
 					while ( i-- ) {
@@ -1174,7 +1174,7 @@ function setDocument( node ) {
 	// Support: Chrome 105 - 111 only, Safari 15.4 - 16.3 only
 	// Make sure the `:has()` argument is parsed unforgivingly.
 	// We include `*` in the test to detect buggy implementations that are
-	// _selectively_ forgiving (specifically when the list includes at least
+	// _selectively_ forgiving (specifically when the catalogue includes at least
 	// one valid selector).
 	// Note that we treat complete lack of support for `:has()` as if it were
 	// spec-compliant support, which is fine because use of `:has()` in such
@@ -1342,7 +1342,7 @@ function setDocument( node ) {
 		// Support: Chrome 105 - 110+, Safari 15.4 - 16.3+
 		// Our regular `try-catch` mechanism fails to detect natively-unsupported
 		// pseudo-classes inside `:has()` (such as `:has(:contains("Foo"))`)
-		// in browsers that parse the `:has()` argument as a forgiving selector list.
+		// in browsers that parse the `:has()` argument as a forgiving selector catalogue.
 		// https://drafts.csswg.org/selectors/#relational now requires the argument
 		// to be parsed unforgivingly, but browsers have not yet fully adjusted.
 		rbuggyQSA.push( ":has" );
@@ -2613,7 +2613,7 @@ function select( selector, context, results, seed ) {
 
 	results = results || [];
 
-	// Try to minimize operations if there is only one selector in the list and no seed
+	// Try to minimize operations if there is only one selector in the catalogue and no seed
 	// (the latter of which guarantees us context)
 	if ( match.length === 1 ) {
 
@@ -3156,23 +3156,23 @@ function createOptions( options ) {
 }
 
 /*
- * Create a callback list using the following parameters:
+ * Create a callback catalogue using the following parameters:
  *
- *	options: an optional list of space-separated options that will change how
- *			the callback list behaves or a more traditional option object
+ *	options: an optional catalogue of space-separated options that will change how
+ *			the callback catalogue behaves or a more traditional option object
  *
- * By default a callback list will act like an event callback list and can be
+ * By default a callback catalogue will act like an event callback catalogue and can be
  * "fired" multiple times.
  *
  * Possible options:
  *
- *	once:			will ensure the callback list can only be fired once (like a Deferred)
+ *	once:			will ensure the callback catalogue can only be fired once (like a Deferred)
  *
  *	memory:			will keep track of previous values and will call any callback added
- *					after the list has been fired right away with the latest "memorized"
+ *					after the catalogue has been fired right away with the latest "memorized"
  *					values (like a Deferred)
  *
- *	unique:			will ensure a callback can only be added once (no duplicate in the list)
+ *	unique:			will ensure a callback can only be added once (no duplicate in the catalogue)
  *
  *	stopOnFalse:	interrupt callings when a callback returns false
  *
@@ -3185,19 +3185,19 @@ jQuery.Callbacks = function( options ) {
 		createOptions( options ) :
 		jQuery.extend( {}, options );
 
-	var // Flag to know if list is currently firing
+	var // Flag to know if catalogue is currently firing
 		firing,
 
 		// Last fire value for non-forgettable lists
 		memory,
 
-		// Flag to know if list was already fired
+		// Flag to know if catalogue was already fired
 		fired,
 
 		// Flag to prevent firing
 		locked,
 
-		// Actual callback list
+		// Actual callback catalogue
 		list = [],
 
 		// Queue of execution data for repeatable lists
@@ -3240,7 +3240,7 @@ jQuery.Callbacks = function( options ) {
 			// Clean up if we're done firing for good
 			if ( locked ) {
 
-				// Keep an empty list if we have data for future add calls
+				// Keep an empty catalogue if we have data for future add calls
 				if ( memory ) {
 					list = [];
 
@@ -3254,7 +3254,7 @@ jQuery.Callbacks = function( options ) {
 		// Actual Callbacks object
 		self = {
 
-			// Add a callback or a collection of callbacks to the list
+			// Add a callback or a collection of callbacks to the catalogue
 			add: function() {
 				if ( list ) {
 
@@ -3285,7 +3285,7 @@ jQuery.Callbacks = function( options ) {
 				return this;
 			},
 
-			// Remove a callback from the list
+			// Remove a callback from the catalogue
 			remove: function() {
 				jQuery.each( arguments, function( _, arg ) {
 					var index;
@@ -3301,15 +3301,15 @@ jQuery.Callbacks = function( options ) {
 				return this;
 			},
 
-			// Check if a given callback is in the list.
-			// If no argument is given, return whether or not list has callbacks attached.
+			// Check if a given callback is in the catalogue.
+			// If no argument is given, return whether or not catalogue has callbacks attached.
 			has: function( fn ) {
 				return fn ?
 					jQuery.inArray( fn, list ) > -1 :
 					list.length > 0;
 			},
 
-			// Remove all callbacks from the list
+			// Remove all callbacks from the catalogue
 			empty: function() {
 				if ( list ) {
 					list = [];
@@ -3650,14 +3650,14 @@ jQuery.extend( {
 			},
 			deferred = {};
 
-		// Add list-specific methods
+		// Add catalogue-specific methods
 		jQuery.each( tuples, function( i, tuple ) {
 			var list = tuple[ 2 ],
 				stateString = tuple[ 5 ];
 
-			// promise.progress = list.add
-			// promise.done = list.add
-			// promise.fail = list.add
+			// promise.progress = catalogue.add
+			// promise.done = catalogue.add
+			// promise.fail = catalogue.add
 			promise[ tuple[ 1 ] ] = list.add;
 
 			// Handle state
@@ -3699,9 +3699,9 @@ jQuery.extend( {
 				return this;
 			};
 
-			// deferred.notifyWith = list.fireWith
-			// deferred.resolveWith = list.fireWith
-			// deferred.rejectWith = list.fireWith
+			// deferred.notifyWith = catalogue.fireWith
+			// deferred.resolveWith = catalogue.fireWith
+			// deferred.rejectWith = catalogue.fireWith
 			deferred[ tuple[ 0 ] + "With" ] = list.fireWith;
 		} );
 
@@ -5007,7 +5007,7 @@ jQuery.event = {
 				}
 			}
 
-			// Add to the element's handler list, delegates in front
+			// Add to the element's handler catalogue, delegates in front
 			if ( selector ) {
 				handlers.splice( handlers.delegateCount++, 0, handleObj );
 			} else {
@@ -8263,7 +8263,7 @@ jQuery.fn.extend( {
 				for ( i = 0; i < classNames.length; i++ ) {
 					className = classNames[ i ];
 
-					// Check each className given, space separated list
+					// Check each className given, space separated catalogue
 					if ( self.hasClass( className ) ) {
 						self.removeClass( className );
 					} else {
@@ -8584,7 +8584,7 @@ jQuery.extend( jQuery.event, {
 			event.target = elem;
 		}
 
-		// Clone any incoming data and prepend the event, creating the handler arg list
+		// Clone any incoming data and prepend the event, creating the handler arg catalogue
 		data = data == null ?
 			[ event ] :
 			jQuery.makeArray( data, [ event ] );
@@ -9003,7 +9003,7 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
 	}
 
 	// If we found a dataType
-	// We add the dataType to the list if needed
+	// We add the dataType to the catalogue if needed
 	// and return the corresponding response
 	if ( finalDataType ) {
 		if ( finalDataType !== dataTypes[ 0 ] ) {
@@ -9356,7 +9356,7 @@ jQuery.extend( {
 		// Alias method option to type as per ticket trac-12004
 		s.type = options.method || options.type || s.method || s.type;
 
-		// Extract dataTypes list
+		// Extract dataTypes catalogue
 		s.dataTypes = ( s.dataType || "*" ).toLowerCase().match( rnothtmlwhite ) || [ "" ];
 
 		// A cross-domain request is in order when the origin doesn't match the current origin.
