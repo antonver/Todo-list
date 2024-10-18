@@ -73,7 +73,7 @@ var _default = function _default(XRegExp) {
   function charCode(chr) {
     var esc = /^\\[xu](.+)/.exec(chr);
     return esc ? dec(esc[1]) : chr.charCodeAt(chr[0] === '\\' ? 1 : 0);
-  } // Inverts a list of ordered BMP characters and ranges
+  } // Inverts a catalogue of ordered BMP characters and ranges
 
 
   function invertBmp(range) {
@@ -221,7 +221,7 @@ var _default = function _default(XRegExp) {
     leadChar: '\\'
   });
   /**
-   * Adds to the list of Unicode tokens that XRegExp regexes can match via `\p` or `\P`.
+   * Adds to the catalogue of Unicode tokens that XRegExp regexes can match via `\p` or `\P`.
    *
    * @memberOf XRegExp
    * @param {Array} data Objects with named character ranges. Each object may have properties
@@ -1204,7 +1204,7 @@ XRegExp.addToken = function (regex, handler, options) {
     } finally {
       _iterator2.f();
     }
-  } // Add to the private list of syntax tokens
+  } // Add to the private catalogue of syntax tokens
 
 
   tokens.push({
