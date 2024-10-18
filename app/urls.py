@@ -1,7 +1,7 @@
 """
-URL configuration for To_Do_List project.
+URL configuration for to_do_list project.
 
-The `urlpatterns` list routes URLs to views. For more information please see:
+The `urlpatterns` catalogue routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
 Examples:
 Function views
@@ -18,8 +18,8 @@ Including another URLconf
 from django.urls import path, include
 from django.conf.urls.static import static
 
-from To_Do_List import settings
+from app import settings
 
-urlpatterns = [
-    path('', include("list.urls", namespace="list"))
-] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
+urlpatterns = [path("", include("catalogue.urls", namespace="catalogue"))] + static(
+    settings.STATIC_URL, document_root=settings.STATICFILES_DIRS
+)
